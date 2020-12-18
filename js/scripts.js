@@ -1,5 +1,5 @@
-//declaring array over multiple objects
-let pokemonList= [
+let pokemonRepository= (function(){
+    let pokemonList= [
     {
         name: 'Pikachu',
         height: 2,
@@ -16,20 +16,19 @@ let pokemonList= [
         type: 'water',
     }
 ];
+function add(pokemon){
+  pokemonList.push(pokemon);
+  if(typeof pokemon!== "object")
+  alert(Please enter an object))
+}
+function getAll(){
+    return pokemonList;
+}
+return {
+  add: add,
+  getAll: getAll};
+})();
 
-pokemonList.forEach(function(list){
-    document.write(`My name is ${list.name} and I am ${list.height} metres tall. <br>`);
-})
-
-
-  //this piece of code is with conditional which checks the heights of the pokemons and prints "wow thst's big" on the side of the tallest pokemon's name.
-
-  // for( let i=0; i<pokemonList.length; i++){
-     //  if(pokemonList[i].height>0 && pokemonList[i].height<5){
-       // document.write(`My name is ${pokemonList[i].name} and I am ${pokemonList[i].height} metres tall. <br>`); 
-       //}
-       
-       //else{
-        //document.write(`My name is ${pokemonList[i].name} and I am ${pokemonList[i].height} metres tall. *Wow that's big! <br>`);
-    //}
-//}
+console.log(pokemonRepository.getAll());
+pokemonRepository.add({name: 'pikachu', height:6.3});
+console.log(pokemonRepository.getAll());
