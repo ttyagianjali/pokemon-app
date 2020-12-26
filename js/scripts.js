@@ -18,8 +18,6 @@ let pokemonRepository= (function(){
 ];
 function add(pokemon){
   pokemonList.push(pokemon);
-  if(typeof pokemon!== "object")
-  alert(Please enter an object))
 }
 function getAll(){
     return pokemonList;
@@ -29,6 +27,8 @@ return {
   getAll: getAll};
 })();
 
-console.log(pokemonRepository.getAll());
-pokemonRepository.add({name: 'pikachu', height:6.3});
-console.log(pokemonRepository.getAll());
+pokemonRepository.add({name: 'Saunasurdex', height:6.3});
+pokemonRepository.getAll().forEach(function(pokemon){
+    console.log(pokemon);
+});
+
