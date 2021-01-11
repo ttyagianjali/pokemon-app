@@ -1,17 +1,38 @@
-.button-class{
-        background-color: #4caf50; /* Green */
+body{
+  background-color: lightgrey;
+}
+button{
         border: none;
-        color: white;
-        padding: 16px 32px;
+        border-radius: 4px;
+        padding: 12px 40px;
         text-align: center;
-        text-decoration: none;
-        display: inline-block;
+        display: inline;
         font-size: 16px;
         margin: 4px 2px;
-        -webkit-transition-duration: 0.4s; /* Safari */
         transition-duration: 0.4s;
         cursor: pointer;
-        background-color: white;
-        color: black;
-        border: 2px solid #4caf50;
+        width: 180px;
+       
       }
+    
+.button-class{
+  background-color: #1aa51e; 
+  color: #fff; 
+  border: 2px solid #4CAF50;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+button:hover,
+button:focus,
+.button-class:hover,
+.button-class:focus{
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.pokemon-list{
+  text-decoration: none;
+  display: flex;
+  flex-flow: row wrap;
+}
+
