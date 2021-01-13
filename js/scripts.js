@@ -30,17 +30,20 @@ function addListItem(pokemon){
   });
 }
 
-function loadList(){
+function loadingMessage(){
   let pokemonList = document.querySelector(".pokemon-list");
   let showLoadingMessage= document.createElement('div');
-  let heading = document.createElement('h1');      
+  let h1 = document.createElement('h1');      
         showLoadingMessage.classList.add('.content-loading');
-        heading.innerText= 'Loading Content';
-        showLoadingMessage.appendChild(heading);
-        console.log(heading.innerText);
+        h1.innerText= 'Loading Content';
+        showLoadingMessage.appendChild(h1);
+        console.log(h1.innerText);
+}
+
+function loadList(){
+  // loading function called here.
+  loadingMessage();
   return fetch(apiUrl).then(function(response){
-    // let hideLoadingMessage= document.querySelector('heading');
-    // hideLoadingMessage.showLoaadingMessage.removeChild('hideLoadingMessage');
     return response.json();
   }).then(function(json){
     return json.results.forEach(function(item){
@@ -56,14 +59,11 @@ function loadList(){
     })
 }
 
+
 function loadDetails(item){
-  let pokemonList = document.querySelector(".pokemon-list");
-  let showLoadingMessage= document.createElement('div');
-  let h1 = document.createElement('h1');      
-        showLoadingMessage.classList.add('.content-loading');
-        h1.innerText= 'Loading Content';
-        showLoadingMessage.appendChild(h1);
-        console.log(h1.innerText);
+  // loading function called here.
+  loadingMessage();
+
   let url= item.detailsUrl;
   return fetch(url).then(function(response){
     return response.json();
@@ -76,11 +76,78 @@ function loadDetails(item){
   });
 }
 
-function showDetails(item){
+(function showDetails(item){
   pokemonRepository.loadDetails(item).then(function(){
     console.log(item);
-  });
-}
+
+
+    //code for the modal starts here
+      let modalContainer = document.querySelector('#modal-container');
+      
+      
+      function showModal(item) {
+        // Clear all existing modal content
+        modalContainer.innerHTML = '';
+        
+        let modal = document.createElement('div');
+        modal.classList.add('modal');
+        
+        // Add the new modal content
+        let closeButtonElement = document.createElement('button');
+        closeButtonElement.classList.add('modal-close');
+        closeButtonElement.innerText = 'Close';
+        closeButtonElement.addEventListener('click', hideModal);
+        
+        let nameElement = document.createElement(h1);
+        nameElement.innerHTML= 'item.name';
+        
+        let heightElement = document.createElement(h2);
+        heightElement.innerHTML= 'item.height';
+
+        let imageElement = document.createElement('img');
+        pokemonImg.src='item.imageUrl'; 
+        
+        modal.appendChild(closeButtonElement);
+        modal.appendChild(titleElement);
+        modal.appendChild(contentElement);
+        modal.appendChild(nameElement);
+        modal.appendChild(heightElement);
+        modal.appendChild(imageElement);
+        modalContainer.appendChild(modal);
+        
+        modalContainer.classList.add('is-visible');
+      }
+      
+      function hideModal() {
+        modalContainer.classList.remove('is-visible');
+      }
+      
+      document.querySelector('#show-modal').addEventListener('click', () => {
+        showModal('item');
+      });
+      
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
+          hideModal();  
+        }
+      });
+      
+      modalContainer.addEventListener('click', (e) => {
+        let target = e.target;
+        if (target === modalContainer) {
+          hideModal();
+        }
+      });
+      
+      return{
+        showDetails: showDetails,
+        showModal: showModal
+       } 
+
+      
+    })();
+  
+
 
 return {
   add: add,
@@ -90,7 +157,7 @@ return {
   loadDetails: loadDetails,
   showDetails: showDetails
   };    
-})();
+
 
 pokemonRepository.loadList().then(function() {
   pokemonRepository.getAll().forEach(function(pokemon){
