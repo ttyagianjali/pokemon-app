@@ -76,16 +76,40 @@ function loadDetails(item){
   });
 }
 
-(function showDetails(item){
-  pokemonRepository.loadDetails(item).then(function(){
-    console.log(item);
+(function showDetails(pokemon){
+  loadDetails(pokemon).then(function(){
+    showModal(pokemon);
+  });
+
+     return showDetails: showDetails;
+      
+    })();
+  
 
 
-    //code for the modal starts here
+return {
+  add: add,
+  getAll: getAll,
+  addListItem: addListItem,
+  loadList: loadList,
+  loadDetails: loadDetails,
+  showDetails: showDetails
+  };    
+
+
+pokemonRepository.loadList().then(function() {
+  pokemonRepository.getAll().forEach(function(pokemon){
+    pokemonRepository.addListItem(pokemon);
+  });
+});
+
+
+
+
+//  code for the modal.  code for the modal starts here.  code for the modal starrts here.  code for the modal starts here.
+ 
+     function showModal(pokemon) {
       let modalContainer = document.querySelector('#modal-container');
-      
-      
-      function showModal(item) {
         // Clear all existing modal content
         modalContainer.innerHTML = '';
         
@@ -123,7 +147,7 @@ function loadDetails(item){
       }
       
       document.querySelector('#show-modal').addEventListener('click', () => {
-        showModal('item');
+        showModal('pokemon');
       });
       
       window.addEventListener('keydown', (e) => {
@@ -139,29 +163,5 @@ function loadDetails(item){
         }
       });
       
-      return{
-        showDetails: showDetails,
-        showModal: showModal
-       } 
-
-      
-    })();
-  
-
-
-return {
-  add: add,
-  getAll: getAll,
-  addListItem: addListItem,
-  loadList: loadList,
-  loadDetails: loadDetails,
-  showDetails: showDetails
-  };    
-
-
-pokemonRepository.loadList().then(function() {
-  pokemonRepository.getAll().forEach(function(pokemon){
-    pokemonRepository.addListItem(pokemon);
-  });
-});
+    });
 
