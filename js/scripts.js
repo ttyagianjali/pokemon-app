@@ -76,14 +76,14 @@ function loadDetails(item){
   });
 }
 
-(function showDetails(pokemon){
+function showDetails(pokemon){
   loadDetails(pokemon).then(function(){
     showModal(pokemon);
   });
+}
 
-     return showDetails: showDetails;
+    
       
-    })();
   
 
 
@@ -94,7 +94,9 @@ return {
   loadList: loadList,
   loadDetails: loadDetails,
   showDetails: showDetails
-  };    
+  }; 
+  
+})(); 
 
 
 pokemonRepository.loadList().then(function() {
@@ -107,9 +109,9 @@ pokemonRepository.loadList().then(function() {
 
 
 //  code for the modal.  code for the modal starts here.  code for the modal starrts here.  code for the modal starts here.
- 
+function modalBox() {
+  let modalContainer = document.querySelector('#modal-container');
      function showModal(pokemon) {
-      let modalContainer = document.querySelector('#modal-container');
         // Clear all existing modal content
         modalContainer.innerHTML = '';
         
@@ -162,6 +164,5 @@ pokemonRepository.loadList().then(function() {
           hideModal();
         }
       });
-      
-    });
 
+ s
