@@ -70,7 +70,7 @@ let pokemonRepository = (function () {
       .then(function (details) {
         item.imageUrl = details.sprites.front_default;
         item.height = details.height;
-        item.types = details.types;
+        item.name = details.name;
       })
       .catch(function (e) {
         console.error(e);
@@ -91,11 +91,11 @@ let pokemonRepository = (function () {
     closeButtonElement.addEventListener('click', () => hideModal());
 
     // let nameElement = $('<h1>' + pokemon.name + '</h1>');// using jquery
-    let nameElement = document.createElement('h1');
-    nameElement.innerText = pokemon.name;
+    let nameElement = document.createElement('p');
+    nameElement.innerText = `Name: ${pokemon.name}`;
 
     let heightElement = document.createElement('p');
-    nameElement.innerText = pokemon.height;
+    heightElement.innerHTML = `Height:  ${pokemon.height}`;
 
     // let imageElement = $('<img class="modal-img" style="width 50%" alt="idk">');
     // imageElement.attr('src', pokemon.imageUrl); // using jquery
