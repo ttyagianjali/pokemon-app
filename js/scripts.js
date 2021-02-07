@@ -64,21 +64,18 @@ let pokemonRepository = (function () {
       });
   }
 
-  
- 
-  
-
   return {
     add: add,
     getAll: getAll,
     // addListItem: addListItem,
     loadList: loadList,
     loadDetails: loadDetails,
-    showDetails: showDetails,
+    // showDetails: showDetails,
   };
 })();
 
-    pokemonRepository.loadList().then(function () {
-      pokemonRepository.getAll().forEach(function (pokemon) {
-        pokemonRepository.addListItem(pokemon);
-      });
+pokemonRepository.loadList().then(function () {
+  pokemonRepository.getAll().forEach(function (pokemon) {
+    pokemonRepository.addListItem(pokemon);
+  });
+});
