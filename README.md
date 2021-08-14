@@ -1,7 +1,7 @@
 ## Table of Contents
 - [Objective](#Objective)
 - [Technologies](#Technologies)
-- [Requirements](#Requirements)
+- [Features](#Features)
 - [Usage](#Usage)
 
 ## Objective
