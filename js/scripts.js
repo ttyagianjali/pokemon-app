@@ -13,19 +13,19 @@ let pokemonRepository = (function () {
     return pokemonList;
   }
 
-  // function addListItem(pokemon) {
-  //   let pokemonList = document.querySelector('.pokemon-list');
-  //   let listpokemon = document.createElement('li');
-  //   listpokemon.classList.add('group-list-item');
-  //   let button = document.createElement('button');
-  //   button.innerText = pokemon.name;
-  //   button.classList.add('btn btn-primary');
-  //   listpokemon.appendChild(button);
-  //   pokemonList.appendChild(listpokemon);
-  //   button.addEventListener('click', () => {
-  //     showDetails(pokemon);
-  //   });
-  // }
+  function addListItem(pokemon) {
+    let pokemonList = document.querySelector('.pokemon-list');
+    let listpokemon = document.createElement('li');
+    listpokemon.classList.add('group-list-item');
+    let button = document.createElement('button');
+    button.innerText = pokemon.name;
+    button.classList.add('btn btn-primary');
+    listpokemon.appendChild(button);
+    pokemonList.appendChild(listpokemon);
+    button.addEventListener('click', () => {
+      showDetails(pokemon);
+    });
+  }
 
   function loadList() {
     // loading function called here.
